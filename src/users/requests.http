@@ -9,7 +9,7 @@ content-type: application/json
 
 
 ### Get one user
-GET  http://localhost:3000/auth/2
+GET  http://localhost:3000/auth/2122222
 
 
 ### Get all user with a given email
@@ -17,7 +17,7 @@ GET  http://localhost:3000/auth?email=test@test.com
 
 
 ### Update a user
-PATCH http://localhost:3000/auth/2
+PATCH http://localhost:3000/auth/22
 content-type: application/json
 
 {
@@ -26,4 +26,4 @@ content-type: application/json
 
 
 ### Remove user per id
-DELETE http://localhost:3000/auth/1
+DELETE http://localhost:3000/auth/122
