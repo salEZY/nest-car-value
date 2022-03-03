@@ -1,3 +1,4 @@
+### Create user
 POST http://localhost:3000/auth/signup
 content-type: application/json
 
@@ -7,11 +8,9 @@ content-type: application/json
 }
 
 
+### Get one user
+GET  http://localhost:3000/auth/1
 
-PATCH  http://localhost:3000/auth/1
-content-type: application/json
 
-{
-    "email": "test3@test.com",
-  
-}
+### Get all user with a given email
+GET  http://localhost:3000/auth?email=test@test.com
