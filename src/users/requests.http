@@ -9,7 +9,7 @@ content-type: application/json
 
 
 ### Get one user
-GET  http://localhost:3000/auth/2122222
+GET  http://localhost:3000/auth/2
 
 
 ### Get all user with a given email
