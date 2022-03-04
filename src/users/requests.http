@@ -13,7 +13,7 @@ GET  http://localhost:3000/auth/2
 
 
 ### Get all user with a given email
-GET  http://localhost:3000/auth?email=test@test.com
+GET  http://localhost:3000/auth?email=test3@test.com
 
 
 ### Update a user
