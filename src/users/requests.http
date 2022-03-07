@@ -7,6 +7,20 @@ content-type: application/json
     "password": "pass1234" 
 }
 
+### Sign in
+POST http://localhost:3000/auth/signin
+content-type: application/json
+
+{
+    "email": "test@test.com",
+    "password": "pass1234" 
+}
+
+### WHO AM I ?
+GET http://localhost:3000/auth/whoami
+
+### Sign out
+POST http://localhost:3000/auth/signout
 
 ### Get one user
 GET  http://localhost:3000/auth/2
@@ -27,3 +41,4 @@ content-type: application/json
 
 ### Remove user per id
 DELETE http://localhost:3000/auth/122
+
