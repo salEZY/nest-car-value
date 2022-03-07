@@ -16,6 +16,12 @@ content-type: application/json
     "password": "pass1234" 
 }
 
+### WHO AM I ?
+GET http://localhost:3000/auth/whoami
+
+### Sign out
+POST http://localhost:3000/auth/signout
+
 ### Get one user
 GET  http://localhost:3000/auth/2
 
