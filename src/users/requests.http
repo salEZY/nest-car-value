@@ -16,7 +16,6 @@ content-type: application/json
     "password": "pass1234" 
 }
 
-
 ### Get one user
 GET  http://localhost:3000/auth/2
 
@@ -36,3 +35,4 @@ content-type: application/json
 
 ### Remove user per id
 DELETE http://localhost:3000/auth/122
+
