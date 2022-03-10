@@ -5,10 +5,11 @@ import { UsersService } from './users.service';
 
 describe('AuthService', () => {
   let service: AuthService;
+  let fakeUsersService: Partial<UsersService>;
 
   beforeEach(async () => {
     // Create a fake copy of usersservuce
-    const fakeUsersService: Partial<UsersService> = {
+    fakeUsersService = {
       find: () => Promise.resolve([]),
       create: (email: string, password: string) =>
         Promise.resolve({ id: 1, email, password } as User),
@@ -38,5 +39,16 @@ describe('AuthService', () => {
     const [salt, hash] = user.password.split('.');
     expect(salt).toBeDefined();
     expect(hash).toBeDefined();
+  });
+
+  it('throws an error if user exists', (done) => {
+    fakeUsersService.find = () =>
+      Promise.resolve([{ id: 1, email: 'a', password: '1' } as User]);
+
+    service.signup('testTest@test.com', 'pass1234').catch(() => done());
+  });
+
+  it('throws an error if user doesnt exist - Sign In', (done) => {
+    service.signin('testTest@test.com', 'pass1234').catch(() => done());
   });
 });
