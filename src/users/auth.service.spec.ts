@@ -9,10 +9,21 @@ describe('AuthService', () => {
 
   beforeEach(async () => {
     // Create a fake copy of usersservuce
+    const users: User[] = [];
     fakeUsersService = {
-      find: () => Promise.resolve([]),
-      create: (email: string, password: string) =>
-        Promise.resolve({ id: 1, email, password } as User),
+      find: (email) => {
+        const filteredUsers = users.filter((user) => user.email === email);
+        return Promise.resolve(filteredUsers);
+      },
+      create: (email: string, password: string) => {
+        const user = {
+          id: Math.floor(Math.random() * 9999999),
+          email,
+          password,
+        } as User;
+        users.push(user);
+        return Promise.resolve(user);
+      },
     };
 
     const module = await Test.createTestingModule({
@@ -50,5 +61,21 @@ describe('AuthService', () => {
 
   it('throws an error if user doesnt exist - Sign In', (done) => {
     service.signin('testTest@test.com', 'pass1234').catch(() => done());
+  });
+
+  it('throws and error if password is invalid - Sign In', (done) => {
+    fakeUsersService.find = () =>
+      Promise.resolve([
+        { id: 1, email: 'whateva@test.com', password: 'sadadad' } as User,
+      ]);
+
+    service.signin('whateva@test.com', 'passworded').catch(() => done());
+  });
+
+  it('returns a user if correct password - Sign in', async () => {
+    await service.signup('test@test.com', 'pass1234');
+
+    const user = await service.signin('test@test.com', 'pass1234');
+    expect(user).toBeDefined();
   });
 });
