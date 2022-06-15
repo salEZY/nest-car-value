@@ -21,4 +21,5 @@ content-type: application/json
 
 
 ### GET an estimate
-GET http://localhost:3000/reports?make=toyota&model=corolla
+GET http://localhost:3000/reports?make=toyota&model=corolla&year=1980&lat=0&lng=0&mileage=1000
+content-type: application/json
