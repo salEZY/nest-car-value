@@ -19,3 +19,6 @@ content-type: application/json
   "approved": true
 }
 
+
+### GET an estimate
+GET http://localhost:3000/reports?make=toyota&model=corolla
