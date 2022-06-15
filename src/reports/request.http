@@ -3,8 +3,8 @@ content-type: application/json
 
 {
   "make": "toyota",
-  "model": "Corrola",
-  "year": 1990,
+  "model": "EKO",
+  "year": 1991,
   "mileage": 10000,
   "price": 2000,
   "lng": 0,
