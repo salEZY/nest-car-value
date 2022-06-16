@@ -6,7 +6,7 @@ import {
   Patch,
   Param,
   Get,
-  Query
+  Query,
 } from '@nestjs/common';
 import { CreateReportDto } from './dtos/create-report.dto';
 import { ReportsService } from './reports.service';
@@ -21,11 +21,11 @@ import { GetEstimateDto } from './dtos/get-estimate.dto';
 
 @Controller('reports')
 export class ReportsController {
-  constructor(private reportsService: ReportsService) { }
+  constructor(private reportsService: ReportsService) {}
 
   @Get()
   getEstimate(@Query() query: GetEstimateDto) {
-    console.log(query)
+    return this.reportsService.createEstimate(query);
   }
 
   @Post()
@@ -35,12 +35,9 @@ export class ReportsController {
     return this.reportsService.create(body, user);
   }
 
-
   @Patch('/:id')
   @UseGuards(AdminGuard)
   approveReport(@Param('id') id: string, @Body() body: ApproveReportDto) {
     return this.reportsService.changeApproval(id, body.approved);
   }
-
-
 }
